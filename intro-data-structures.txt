@@ -1,0 +1,53 @@
+1) A line of people at an amusement park ride.
+
+The line is composed of members, represented as strings.
+There is a front to the line, as well as a back.
+When someone enters the line, place them at the end.
+People may leave the line whenever they see fit, and those behind them take their place.
+Given the above real-world information, use an array data structure to code the following solution.
+
+a) Use an array input: ["Vivian", "Ava", "Josh", "Patrick", "Mike"]
+b) Insert a new person, "Mary" at the end of the line. In other words, you should insert Mary after Mike.
+c) Find a person in line named "Josh." This function should return the position of 2 in the array, (recall that arrays are 0-based).
+d) Find a person in line named "Emily." What should your function return if it does not find the item in the array?
+e) What if Ava wants to allow a friend, "Melissa", to cut in line in front of her? How would you code this so Melissa appears before Ava?
+f) If Patrick wants to leave the line, how would you delete him from the array?
+A:
+var people = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+people.push("Mary");
+function findPerson(name){
+  for(var i = 0; i < people.length; i++){
+    if (people[i] == name){
+      return i;
+    }
+  }
+    return name + " is not in this line";
+}
+
+function cuttingLineInFrontOf(personCutting, personLettingGetCut){
+  var personLettingGetCutIndex = findPerson(personLettingGetCut);
+  people.splice(personLettingGetCutIndex, 0, personCutting);
+}
+cuttingLineInFrontOf("Melissa", "boo");
+
+function leavingLine(name){
+  leavingPersonIndex = findPerson(name);
+  people.splice(leavingPersonIndex, 1);
+}
+
+2) Provide another real-world example that you can model using a data structure.
+
+A: I start off with an empty array of friends list. Whenever I make a new friend,
+I have a function called addFriends that adds my new friend/s to the end of my friends list.
+Whenever I lose a friend/s, I have a removeFriend function that removes my friend/s from his/her
+current place in the list and my friends after that deleted friend/s take his/her place.
+
+3) How would your data structure allow developers to access and manipulate the data?
+
+A: Developers can access my friends list array at any time as it is a global variable.
+To add a friend, developers can use addFriends function that takes an argument/s in string and
+add it to the end of my friends list array. To remove a friend, developers can use
+removeFriend function that takes an argument/s in string and searches that friend/s in my friends list
+and removes it while others take that friends place in the array. The developers can also
+take an array as an argument in order to delete or add multiple friends at any given time.
+However, for this change the above 2 functions will have to be changed as well.
