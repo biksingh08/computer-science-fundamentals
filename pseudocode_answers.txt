@@ -1,0 +1,51 @@
+1) Why do programmers use pseudocode?
+
+A: Programmers use pseudocode to easily understand
+the algorithms before transferring the pseudocode to a formal language.
+
+If you run pseudocode on your computer what would happen?
+
+A: You would get error because computer won't understand it as it is not one of
+the formal languages.
+
+
+Programming Questions
+
+1) Create a function that takes two numbers and prints out the greater number.
+
+Function AddTwoNumbers(number1, number2)
+  IF number1 is less than number2
+  return number2
+  ELSE
+    return number1
+  END IF
+END Function
+
+2) Create a function that prints out the numbers from 1 to 100.
+
+Function PrintHundered
+  For (SET a variable name equal to 1; SET the variable to less than and equal to 100; Increase the variable by 1)
+    PRINT the variable
+  END FOR
+END Function
+
+Create a function that searches for a specific entry in a phonebook.
+
+Function SearchEntry(phonebook, entry)
+  For (SET a variable named i equal to 0; SET i to less than the length of phonebook; increase i by 1)
+    IF phonebook[i] = entry
+    return phonebook[i]
+    END IF
+  END For
+  Return "That entry does not exist in the phonebook"
+
+END Function
+
+3) Using the pseudocode you wrote for the previous question, implement it in any
+computer language of your choice.
+
+function oneHundered(){
+  for(var i = 1; i <= 100; i++){
+    console.log(i);
+  }
+}
