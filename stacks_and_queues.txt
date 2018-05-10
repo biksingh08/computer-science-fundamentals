@@ -1,0 +1,62 @@
+1) What is the main difference between a stack and a queue?
+
+A: Stack data structure means last in and first out. Queue data structure means
+first in first out.
+
+2) What are the similarities between stacks and queues?
+
+A: They both require the objects to be stored in a data structure.
+
+3) Imagine you are an engineer tasked with implementing the UNDO and REDO options
+in a word processor such as Microsoft Word. Which data structure would you use
+for each option and why?
+
+A: UNDO is going to follow last in first out scenario so we will use stack
+data structure. REDO is going to follow first in first out scenario, so we will use
+queue data structure for that.
+
+Programming questions
+
+1) Given a string, reverse it using a stack. For example, the string "Bloc!" should
+be converted to "!colB".
+
+function reverseString(str){
+  var strSplit = str.split('');
+  var reversedStr = "";
+    while (strSplit.length > 0){
+      reversedStr += strSplit.pop();
+    }
+      return reversedStr;
+  }
+
+2) Implement the delete functionality of a stack using one queue. Make a FIFO data
+structure mirror the functionality of a LIFO data structure.
+
+To delete an item, take all of the elements in the queue one at a time and put them
+at the end of the queue, except for the last one which should be deleted and returned.
+
+CLASS Stack
+ FUNCTION pop(queue)
+   INIT stack;
+   SET current to queue.dequeue;
+   WHILE current is NOT undefined;
+      push current to stack;
+      SET current to queue.dequeue
+   END WHILE
+ END FUNCTION
+END CLASS
+
+3) Fill in the methods for the following Queue class so that it will work as
+expected (FIFO).
+
+CLASS QUEUE
+ FUNCTION enqueue(element)
+   PUSH element to end of the list ;
+ END FUNCTION
+
+ FUNCTION dequeue
+    SET current to first element;
+    DELETE current from the list;
+    RETURN current;
+ END FUNCTION
+END CLASS
