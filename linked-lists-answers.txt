@@ -1,0 +1,104 @@
+1) What are some pros and cons of using linked lists instead of arrays?
+
+A: Linked list allows to allocate available memory more efficiently until you run out of
+memory using nodes. Arrays on the other hand require memory allocation right
+next to each other. This makes arrays memory allocation limited because there might
+not be any free memory bits left that are contiguous. Linked list requires any search
+to start from beginning of the list and go from node to node until you find your match.
+This can be inefficient if the node you are looking for is at the end of the list.
+Arrays on the other hand allow you to access data in the array using indexing. Thus,
+saving time compared to a long linked list.
+
+2) Come up with a real world example of a linked list.
+
+A: Tom has 5 friends named Maria, John, Bob, Josh, and Eric. Each friend leads
+to the next friend. If you want to find Eric, you have to go through Maria and then
+John and then Bob and then Josh in order.
+
+
+Programming Questions
+
+1) The Linked List push function should take a value, create a node, and add it to
+the end of a list. Below is a push function for a singly linked list. However, there
+is something wrong with it. Find the bug and fix the code.
+
+LinkedList.prototype.push = function(element) {
+ SET node = {
+   value: element,
+   next: null
+ }
+
+ IF the head node does not exist
+   THEN SET head to node
+ ELSE
+   SET current node to head
+   SET current.next to node
+ }
+}
+
+A: We need a loop in this linked list that will keep checking for next element in
+the list. Once that element doesn't exist anymore we know that at that point we reached
+the end of the list and we can finally push the element to the end of the list.
+
+LinkedList.prototype.push = function(element) {
+ SET node = {
+   value: element,
+   next: null
+ }
+
+ IF the head node does not exist
+   THEN SET head to node
+ ELSE
+  set current to head
+   While current.next is not undefined
+    SET current to current.next
+   END WHILE
+    SET current.next to node
+END IF
+ }
+}
+
+1) Given an unsorted singly linked list, remove all duplicates from the linked list.
+Example
+Input: a -> c -> d -> d -> a
+Output: a -> c -> d
+
+A: FUNCTION removeDuplicates(linkedList){
+    IF linkedList.head is not undefined
+      INIT empty hash
+      SET current to linkList.head
+      WHILE current.next exists in the linkedList
+        IF hash does not include current
+          SET hash[current] to 1
+        ELSE
+          SET previous.next to current.next
+          SET current to current.next
+        END IF
+      END WHILE
+    ELSE
+      RETURN linkedList
+    END IF
+}
+
+3) Given an unsorted singly linked list, reverse it.
+Example
+Input: a -> b -> c -> d
+Output: d -> c -> b -> a
+
+A: FUNCTION reverseList(linkedList){
+    IF linkedList.head is not undefined
+      SET current to linkList.head
+      WHILE current.next exists in the linkedList
+        SET previous.next to current
+        SET current to current.next
+        ELSE
+          SET previous.next to current.next
+          SET current to current.next
+      END WHILE
+    ELSE
+      WHILE previous is not undefined or null 
+        SET current to previous.next
+      END WHILE
+      return linkedList
+    END IF
+}
