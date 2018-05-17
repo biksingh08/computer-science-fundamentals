@@ -1,0 +1,62 @@
+1) Using proper pseudo-code, describe the following primitive algorithms:
+
+1) Making coffee;
+2) Washing dishes;
+3) A choice of your own.
+
+A:
+FUNCTION makeCoffee(coffeeMaker, coffeePowder, milk, water, filterPaper, cup)
+  INIT coffeeMaker, coffeePowder, milk, water, filterPaper
+  ADD filterPaper to coffeeMaker
+  ADD CoffeePowder to filterPaper
+  ADD water to coffeeMaker
+  WHILE coffeeMaker light is not green
+      WAIT
+  END WHILE
+  POUR coffee into cup
+  ADD milk if necessary
+END FUNCTION
+
+FUNCTION dishWasher(sponge, dirtyDishes, soap, water, dishHolder, leftSink, rightSink)
+  ADD dirtyDishes to leftSink
+  ADD soap and water to sponge
+  FOR each dish in leftSink
+    USE sponge on dish until clean
+    PUSH clean dish to rightSink
+  END FOR
+  FOR each dish in rightSink
+    USE water until clean
+    PUSH clean dish to dishHolder
+  END FOR
+END FUNCTION
+
+FUNCTION makeCall(smartPhone, phoneApp, call, contactList, personToCall)
+  unlock smartPhone
+  While a call has not been placed
+    find phoneAPP in smartPhone
+    TAP phoneAPP
+    FOR each person in contactList
+      IF personToCall === person
+        call person
+      END IF
+    END FOR
+  END WHILE
+END FUNCTION
+
+2) As with the knot algorithm, there may be more than one way to solve the problem.
+It is essential to try to pick the best algorithm for a situation. Name three
+companies who created an algorithm that made them successful, e.g., Google's search
+algorithm. It doesn't need to be a tech example (such as a recipe or manufacturing
+a product). Google's algorithm produces more relevant results than other search
+engines; what about each of your cases make them stand out?
+
+A: 1) DATAGUISE- their algorithm searches for sensitive data and helps protect that data.
+2) BOWFLEX MACHINE- this machine combines multiple different workouts in 1 machine.
+3) EXPERT DRIVER- This person is able to drive the most efficient compared to other drivers.
+
+3) Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm.
+
+A: Efficient algorithm is an algorithm that gets you the result you are looking for in the
+most efficient way possible. This can include using less memory, storage, computing power etc.
+Inefficient algorithm basically does the opposite. It takes more time, more memory, more computing power or
+longer use of computational power etc.
