@@ -1,0 +1,99 @@
+1) What is a binary tree and what makes it unique to other trees?
+
+A: A binary tree is a data structure in which nodes point to the left child or right child.
+
+2) What is a heuristic?
+
+A: Heuristic is basically guessing algorithms to reach to your destination or result.
+
+3) What is another problem besides the shortest-path problem that requires the use of heuristics?
+
+A: Another problem could be longest path problem. Instead of finding the shortest path,
+it has to find the longest path using heuristics.
+
+4) What is the difference between a depth-first search and a breadth-first search?
+
+A: Depth first search approach starts at the root node and searches a single branch
+and if it doesn't find anything, it will move up to the parent and do single branch search
+again and so on. Breadth first search approach starts at root node and goes along the
+rows and searches each from right to left or left to right before moving on to the next
+row.
+
+5) Explain in your own words what an undirected, a-cyclic, unweighted graph is.
+
+A: Undirected, a cyclic, unweighted graph would have nodes in which each node is merely connecting
+to the other node without any start or end node. The graph would be a-cyclic which means it doesn't
+ loop back to its starting position. It keeps going until it finds what we are looking for or returns an
+ error if it doesn't. The graph would be unweighted which means the time isn't taken into consideration
+ when transversing between nodes. So, this graph would be more inefficient.
+
+6) What kind of graph is a binary search tree?
+
+A: A binary search tree includes an sorted or ordered binary tree. It all starts from the root
+node. The root node can have 2 childs called the left and right child. The left node must have a
+value that is equal or less than the value or its root node. The right child must have a value that
+is greater than or equal to the value of its root node. Each node along the root node must have a leaf node
+and a root node from which another binary tree may be substituted. For example, the left node relevant
+to the root node can be a leaf node and the right node relevant to the root node can be another binary tree.
+
+Programming questions
+
+1) Given a Binary Search Tree and a value, write a function that checks to see whether
+the value exists within the tree.
+
+Example: The value 10 exists in the tree. The value 23 does not exist in the tree.
+
+A: I will start from the root node and save it in a temp variable. Then, I will check
+the edge case whether the temp variable is equal to the value I am searching for or not
+and return accordingly. If it doesn't exist then I will check if the root node has any
+right child nodes. If the right child nodes exist
+
+
+FUNCTION findValue(startNode, value)
+  SET rootNode to startNode
+  WHILE rootNode exists
+    IF rootNode.value === value
+      return "Value Exists"
+    END IF
+      IF value <= rootNode.leftChild
+        SET rootNode to rootNode.leftchild
+      ELSE SET rootNode to rootNode.rightchild
+      END IF
+  END WHILE
+  RETURN "Doesn't Exist"
+END FUNCTION
+
+2) Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds
+the distance between the two nodes.
+
+Example: The distance between the nodes 4 and 10 is 4. The distance between the
+nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
+
+A:
+FUNCTION findDistance(startNode, n1, n2)
+  INIT distance
+  INIT n1StartNode
+  SET rootNode to startNode
+  WHILE rootNode exists
+    IF rootNode.value === n1
+    SET n1StartNode to rootNode
+    ELSE IF n1 <= rootNode.leftChild
+        SET rootNode to rootNode.leftchild
+    ELSE IF n1 >= rootNode.leftChild
+        SET rootNode to rootNode.rightchild
+    END IF
+    END WHILE
+    SET currentNode to n1StartNode.parentNode
+    WHILE currentNode exists
+      INCREMENT distance by 1
+      IF currentNode === n2
+        RETURN distance
+      END IF
+      IF currentNode.rightChild >= n2
+        SET currentNode to currentNode.parentNode
+      ELSE IF currentNode.rightChild <= n2
+        SET currentNode to currentNode.rightChild
+      END
+    END WHILE
+    return "one or both nodes do not exist"
+END FUNCTION
