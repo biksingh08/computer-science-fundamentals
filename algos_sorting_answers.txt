@@ -1,0 +1,72 @@
+1) Write pseudocode for bubble sort.
+
+A:
+FUNCTION bubbleSort(array)
+  FOR LOOP( SET i equal to 0; i less than array.length; increase i by 1 )
+    SET variable a to 0
+    while a is less than array.length - 1 - i;
+      IF array[a+1] is less than array[a]
+        tempNext = array[a+1]
+        tempPrev = arr[a]
+        array[a] = tempNext
+        array[a+1] = tempPrev
+      END IF
+      increase a by 1
+    END WHILE
+  END FOR LOOP
+  RETURN array
+END FUNCTION
+
+2) Write pseudocode for quicksort.
+
+A: First, we will create a function to partition the numbers depending on the pivot.
+Then, we will use recursion.
+FUNCTION partition(array, low, high){
+     SET pivot to array[low]
+     SET leftside to low
+     FOR LOOP i is equal to low + 1 to high
+         IF array[i] is less than the pivot value
+             swap array[i] with array[leftside + 1]
+             SET leftside equal to leftside + 1
+         END IF
+      END FOR
+     swap pivot with array[leftside]
+    RETURN (leftside)
+END FUNCTION
+
+FUNCTION quickSort(array, low, high){
+    IF low is less than high
+        SET pivot_location to partition(array, low, high)
+        quickSort(array, low, pivot_location)
+        quickSort(array, pivot_location + 1, high)
+    END IF
+END FUNCTION
+
+3) We talked about time complexity in a previous checkpoint, and how to get an idea
+of the efficiency of an algorithm. After looking at the pseudocode for the above
+sorting methods, identify why merge sort and quick sort are much more efficient
+than the others. Walking through each algorithm with a few sample collections may help.
+
+A: Insert sort, selection sort, and bubble sort have time complexity of O(n^2). The outer loop
+in these sorts has to keep looping until the end of the input. The inner loop has to keep looping
+until the end of the input again while comparing an element to others in the list. This is repeated
+as many times as the input length in order to sort all elements in the array. Thus giving us O(n^2) time
+complexity. Merge sort and quick sort have time complexity of O(nlogn). In merge sort, the input size
+is reduced by half until there is only 1 element left and recursion is often used for this case, making it
+easy to understand and efficient than other sorts. In quick sort, a pivot point is chosen,
+pivot point is compared to all other elements in the input. The elements smaller than the pivot point
+are moved to the left of the pivot point and larger than the pivot point are moved to the right side
+of the pivot point. Recursion is again used reducing the input while performing same task mentioned earlier.
+However, in quick sort, the average case is O(nlogn). In merge sort, worst case is O(nlogn).
+
+
+4) All of the sorts addressed in this checkpoint are known as comparison sorts.
+Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+
+A:
+In bucket sort, the idea is to separate the input into separate buckets. Say we have an
+input of 100 numbers starting from 1. We will use 10 buckets to store numbers accordingly.
+For example, numbers 1-10 will go to bucket 1, numbers 11-20 will go in bucket 2 and so on.
+Once all our buckets are full, we will use one of the sorts to sort the numbers. In this case,
+we will use insertion sort on all the buckets and sort the numbers. After that, we just
+connect the buckets together starting from first bucket and our array will be sorted.
