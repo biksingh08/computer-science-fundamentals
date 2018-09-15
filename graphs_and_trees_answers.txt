@@ -49,23 +49,20 @@ and return accordingly. If it doesn't exist then I will check if the root node h
 right child nodes. If the right child nodes exist
 
 
-function findValue(root, value) {
-	if(value) > root {
-		findValue(node.right, value)
-			if(node) == value {
-				return true;
-        }
-			}
-	else if (value) < root {
-		findValue(node.left, value)
-			if(node) == value {
-				RETURN true;
-        }
+function findValue(bst, value){
+  var rootNode = bst.root;
+  while(rootNode) {
+      if(rootNode.value === value){
+        return "Value Exists"
       }
-	else
-		return false;
-
-
+      else if(value <= rootNode.left){
+        rootNode = rootNode.left
+      }
+      else {
+        rootNode = rootNode.right
+      }
+  }
+  return "One or both nodes do not exist"
 }
 
 2) Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds
@@ -76,36 +73,37 @@ nodes 8 and 10 is 1. The distance between the nodes 1 and 14 is 4.
 
 A:
 
-function findDistance(startNode, n1, n2){
-  var distance;
-  var n1StartNode;
-  rootNode = startNode;
+function findDistance(bst,n1,n2) {
+  var n1Distance = 0;
+  var n2Distance = 0;
+  var rootNode = bst.root;
 
-  while (rootNode) {
-    if (rootNode.value) == n1 {
-      n1StartNode = rootNode;
+  console.log(rootNode.value);
+  if ((n1 > rootNode.value) && (n2 > rootNode.value)) {
+      findDistance(rootNode.right.value,n1,n2)
+  }
+
+  if ((n1 < rootNode.value) && (n2 < rootNode.value)) {
+      findDistance(rootNode.left.value,n1,n2)
+  }
+
+  if ((n1 > rootNode.value) && (n2 < rootNode.value)) {
+
+      while (rootNode.right.value != n1){
+        n1Distance += 1;
       }
-    else if (n1) <= rootNode.leftChild {
-        rootNode = rootNode.leftchild
-        }
-    else if (n1) >= rootNode.leftChild{
-          rootNode = rootNode.rightchild
-        }
-    }
+      while (rootNode.left.value != n2){
+        n2Distance += 1
+      }
+  }
+  if ((n1 < rootNode.value) && (n2 > rootNode.value)) {
 
-    currentNode = n1StartNode.parentNode
-
-    while (currentNode) {
-       distance += 1
-      if(currentNode) === n2{
-        return distance
-       }
-      if (currentNode.rightChild) >= n2 {
-        currentNode = currentNode.parentNode
-        }
-      else if(currentNode.rightChild) <= n2 {
-        currentNode = currentNode.rightChild
-        }
-     }
-    return "node does not exist"
+      while (rootNode.right.value != n2) {
+        n2Distance += 1
+      }
+      while (rootNode.left.value != n1){
+        n1Distance += 1
+      }
+  }
+  return n1Distance + n2Distance
 }
