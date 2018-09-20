@@ -78,32 +78,69 @@ function findDistance(bst,n1,n2) {
   var n2Distance = 0;
   var rootNode = bst.root;
 
-  console.log(rootNode.value);
+  console.log('rootNode', rootNode);
+  console.log('rootNode.value:' + rootNode.value);
+  console.log('n1:' + n1);
+  console.log('n2:' + n2);
+
+  if (n1 === rootNode.value) {
+    n1Distance = 0;
+    n1Distance = 1;
+    // We just need to look on the other side of the tree
+    let theRight = rootNode.right;
+    while (theRight && theRight.value != n2) {
+      theRight = theRight.right;
+      n2Distance += 1
+    }
+  }
+
+    if (n2 === rootNode.value) {
+    n2Distance = 0;
+    n2Distance = 1;
+    let theLeft = rootNode.left;
+    while (theLeft && theLeft.value != n1) {
+      theLeft = theLeft.right;
+      n1Distance += 1
+    }
+  }
+
   if ((n1 > rootNode.value) && (n2 > rootNode.value)) {
-      findDistance(rootNode.right.value,n1,n2)
+      return findDistance(rootNode.right.value,n1,n2)
+        console.log(rootNode.value);
+
   }
 
   if ((n1 < rootNode.value) && (n2 < rootNode.value)) {
-      findDistance(rootNode.left.value,n1,n2)
+      return findDistance(rootNode.left.value,n1,n2)
+        console.log(rootNode.value);
+
   }
 
   if ((n1 > rootNode.value) && (n2 < rootNode.value)) {
-
-      while (rootNode.right.value != n1){
+      let theRight = rootNode.right;
+      while (theRight && theRight.value != n1){
+        theRight = theRight.right;
         n1Distance += 1;
       }
-      while (rootNode.left.value != n2){
+      let theLeft = rootNode.left;
+      while (theLeft && theLeft.value != n2){
+        theLeft = theLeft.left;
         n2Distance += 1
       }
   }
   if ((n1 < rootNode.value) && (n2 > rootNode.value)) {
-
-      while (rootNode.right.value != n2) {
+    let theRight = rootNode.right;
+      while (theRight && theRight.value != n2) {
+        theRight = theRight.right;
         n2Distance += 1
       }
-      while (rootNode.left.value != n1){
+      let theLeft = rootNode.left;
+      while (theLeft && theLeft.value != n1){
+        theLeft = theLeft.left;
         n1Distance += 1
       }
   }
+
   return n1Distance + n2Distance
 }
+findDistance(bst,3,5);
